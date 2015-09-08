@@ -5,11 +5,11 @@
 with stdenv.lib;
 stdenv.mkDerivation rec {
   name = "mariadb-${version}";
-  version = "10.0.15";
+  version = "10.0.16";
 
   src = fetchurl {
     url = "https://github.com/MariaDB/server/archive/${name}.tar.gz";
-    sha256 = "1maa0mwqxljh9nd0kjbcr9hy9v9k2x25b15xb5d5p41wadrxk6jy";
+    sha256 = "1ki2nj626zfvigj1qy53awbjr93158l7qldrc7l6rpdy29q83d2n";
   };
 
   buildInputs = [ cmake ncurses openssl zlib pcre libxml2 boost judy bison libevent ]

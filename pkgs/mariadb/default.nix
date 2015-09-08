@@ -4,11 +4,11 @@ stdenv.mkDerivation rec {
   name = "mariadb-${version}";
 
   # Do not bump until https://mariadb.atlassian.net/browse/MDEV-8540 is fixed
-  version = "10.0.15";
+  version = "10.0.16";
 
   src = fetchurl {
     url = "https://github.com/MariaDB/server/archive/${name}.tar.gz";
-    sha256 = "1maa0mwqxljh9nd0kjbcr9hy9v9k2x25b15xb5d5p41wadrxk6jy";
+    sha256 = "1ki2nj626zfvigj1qy53awbjr93158l7qldrc7l6rpdy29q83d2n";
   };
 
   buildInputs = [ cmake bison ncurses openssl perl readline zlib ]
@@ -24,7 +24,10 @@ stdenv.mkDerivation rec {
     "-DHAVE_IPV6=yes"
     "-DWITHOUT_TOKUDB=1"
     "-DINSTALL_SCRIPTDIR=bin"
+    "-DCMAKE_BUILD_TYPE=Debug"
   ];
+
+  dontstrip = true;
 
   NIX_LDFLAGS = stdenv.lib.optionalString stdenv.isLinux "-lgcc_s";
 
